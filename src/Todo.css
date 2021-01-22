@@ -4,6 +4,7 @@
 
 .Todo-button {
     float: right;
+    margin-left: 3px;
 }
 
 .Todo-complete {

@@ -14,7 +14,7 @@ const TodoForm = () => {
 
     const handleSubmit = (evt) => {
         evt.preventDefault();
-        const newTodo = { id: uuid(), text: todo, complete: false };
+        const newTodo = { id: uuid(), text: todo, complete: false, editing: false };
         setTodo('');
         dispatch({ type: 'ADD', payload: newTodo });
     }

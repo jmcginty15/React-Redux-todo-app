@@ -35,6 +35,22 @@ const rootReducer = (state = INITIAL_STATE, action) => {
             const uncompleteState = { ...state, todos: newTodos };
             localStorage.setItem('todos', JSON.stringify(uncompleteState.todos));
             return uncompleteState;
+        case 'EDIT':
+            newTodos[index].editing = true;
+            const editState = { ...state, todos: newTodos };
+            localStorage.setItem('todos', JSON.stringify(editState.todos));
+            return editState;
+        case 'CANCEL_EDIT':
+            newTodos[index].editing = false;
+            const cancelEditState = { ...state, todos: newTodos };
+            localStorage.setItem('todos', JSON.stringify(cancelEditState.todos));
+            return cancelEditState;
+        case 'SUBMIT_EDIT':
+            newTodos[index].editing = false;
+            newTodos[index].text = action.text;
+            const submitEditState = { ...state, todos: newTodos };
+            localStorage.setItem('todos', JSON.stringify(submitEditState.todos));
+            return submitEditState;
         default:
             return { ...state };
     }
