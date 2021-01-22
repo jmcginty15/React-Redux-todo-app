@@ -1,4 +1,6 @@
-const INITIAL_STATE = { todos: [] };
+const storageTodos = localStorage.getItem('todos');
+const initialTodos = storageTodos ? JSON.parse(storageTodos) : [];
+const INITIAL_STATE = { todos: initialTodos };
 
 const findIndex = (list, id) => {
     let i = 0;
@@ -15,16 +17,24 @@ const rootReducer = (state = INITIAL_STATE, action) => {
 
     switch (action.type) {
         case 'ADD':
-            return { ...state, todos: [...state.todos, action.payload] };
+            const addState = { ...state, todos: [...state.todos, action.payload] };
+            localStorage.setItem('todos', JSON.stringify(addState.todos));
+            return addState;
         case 'REMOVE':
             newTodos.splice(index, 1);
-            return { ...state, todos: newTodos };
+            const removeState = { ...state, todos: newTodos };
+            localStorage.setItem('todos', JSON.stringify(removeState.todos));
+            return removeState;
         case 'COMPLETE':
             newTodos[index].complete = true;
-            return { ...state, todos: newTodos };
+            const completeState = { ...state, todos: newTodos };
+            localStorage.setItem('todos', JSON.stringify(completeState.todos));
+            return completeState;
         case 'UNCOMPLETE':
             newTodos[index].complete = false;
-            return { ...state, todos: newTodos };
+            const uncompleteState = { ...state, todos: newTodos };
+            localStorage.setItem('todos', JSON.stringify(uncompleteState.todos));
+            return uncompleteState;
         default:
             return { ...state };
     }
