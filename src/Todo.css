@@ -1,0 +1,11 @@
+.Todo {
+    width: 100%;
+}
+
+.Todo-button {
+    float: right;
+}
+
+.Todo-complete {
+    text-decoration: line-through;
+}

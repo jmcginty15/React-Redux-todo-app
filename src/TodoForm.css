@@ -1,0 +1,13 @@
+.TodoForm {
+    width: fit-content;
+    margin: auto;
+}
+
+.TodoForm-input {
+    float: right;
+    margin-left: 10px;
+}
+
+.TodoForm-button {
+    margin-left: 5px;
+}

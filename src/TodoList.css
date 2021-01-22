@@ -1,0 +1,9 @@
+.TodoList {
+    width: 400px;
+    text-align: left;
+    margin: auto;
+}
+
+.TodoList-header {
+    text-align: center;
+}
